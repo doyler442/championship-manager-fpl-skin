@@ -1,0 +1,10 @@
+{
+  "leagueId": 86140,
+  "userEntryId": 0,
+  "season": "2026/27",
+  "timezone": "Europe/Dublin",
+  "pollMs": 60000,
+  "coinTossWinners": {},
+  "staleMaxSeconds": 86400,
+  "maxLeaguePages": 100
+}

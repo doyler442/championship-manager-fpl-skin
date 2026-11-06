@@ -1,0 +1,7 @@
+/config.local.json
+/data/
+/cache/
+/runtime/
+/releases/
+*.log
+.DS_Store
