@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>FPL Manager 2026/27 v0.8.1</title>
+<title>Fantasy Championship Manager 2026/27 v0.8.2</title>
 <link rel="preload" as="image" href="images/backgrounds/charlton-pitch.jpg" fetchpriority="high">
 <style>
   :root{
@@ -314,22 +314,21 @@
   .setup-heading{position:absolute;left:112px;right:20px;top:105px;height:50px;display:flex;align-items:center;justify-content:center;color:var(--yellow);font-size:23px;font-weight:700;text-shadow:2px 2px #222;background:rgba(20,20,20,.18)}
   .setup-menu{position:absolute;left:128px;right:28px;top:178px;height:270px;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:repeat(4,1fr);background:rgba(15,15,15,.23)}
   .setup-choice{border:2px solid #1021a8;border-top-color:#243de0;border-left-color:#243de0;background:rgba(25,25,25,.22);display:flex;align-items:center;justify-content:center;color:#eee;font-size:16px;text-shadow:1px 1px #222;cursor:var(--cm-hand)}
-  .setup-choice:hover:not(.disabled),.setup-choice.selected{background:rgba(230,230,230,.50);color:#111;text-shadow:none;box-shadow:inset 0 0 0 1px var(--yellow)}
   .setup-choice.disabled{color:#969696;cursor:var(--cm-arrow);background:rgba(30,30,30,.13)}
   
   .setup-bottom{position:absolute;left:106px;right:14px;bottom:8px;height:43px;display:grid;grid-template-columns:3fr 1fr;gap:2px}
-  .setup-btn{background:linear-gradient(#c0c0c0,#969696);border:2px solid #ddd;border-right-color:#555;border-bottom-color:#555;color:#eee;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:700;text-shadow:1px 1px #666;cursor:var(--cm-hand)}.setup-btn.disabled{color:#666;cursor:var(--cm-arrow)}.setup-btn.enabled:hover{filter:brightness(1.08)}
+  .setup-btn{background:linear-gradient(#c0c0c0,#969696);border:2px solid #ddd;border-right-color:#555;border-bottom-color:#555;color:#eee;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:700;text-shadow:1px 1px #666;cursor:var(--cm-hand)}.setup-btn.disabled{color:#666;cursor:var(--cm-arrow)}
   .setup-manager-box{position:absolute;left:106px;right:14px;top:178px;bottom:60px;background:rgba(10,10,10,.34);border:2px solid #1223ae;overflow-y:auto;scrollbar-width:thin;scrollbar-color:#777 #aaa}
   .setup-manager-row{height:46px;display:grid;grid-template-columns:1fr 1.15fr;align-items:center;border-bottom:2px solid #1223ae;color:#eee;font-size:14px;cursor:var(--cm-hand)}.setup-manager-row>div{padding:0 20px}.setup-manager-row .team{color:var(--yellow)}.setup-select-heading{top:106px}
   .photo::before,.setup-photo::before{content:"";position:absolute;inset:0;background:linear-gradient(rgba(0,0,0,.05),rgba(0,0,0,.10));pointer-events:none}
-  .setup-websites{position:absolute;left:280px;right:160px;top:449px;height:58px;border:2px solid #1021a8;background:rgba(25,25,25,.22);display:flex;align-items:center;justify-content:center;color:#eee;font-size:15px;cursor:var(--cm-hand);transition:background .12s linear,color .12s linear,box-shadow .12s linear}
-  .setup-websites:hover{background:rgba(230,230,230,.50);color:#111;text-shadow:none;box-shadow:inset 0 0 0 1px var(--yellow)}
-  .setup-credits-panel{position:absolute;left:106px;right:14px;top:92px;height:404px;background:rgba(7,10,48,.72);border:2px solid #243de0;box-shadow:inset 0 0 0 1px rgba(255,255,255,.18);padding:14px 18px;overflow:auto}
+  .setup-websites{position:absolute;left:280px;right:160px;top:449px;height:58px;border:2px solid #1021a8;background:rgba(25,25,25,.22);display:flex;align-items:center;justify-content:center;color:#eee;font-size:15px;cursor:var(--cm-hand)}
+  .setup-credits-panel{position:absolute;left:106px;right:14px;top:92px;height:404px;padding:14px 18px;overflow:auto}
   .setup-credits-title{margin:0 0 6px;font-size:24px;color:var(--yellow);text-shadow:2px 2px #111}
   .setup-credits-sub{font-size:11px;line-height:1.42;color:#ececec;margin-bottom:10px}
   .setup-credits-section{margin-top:10px}
   .setup-credits-section h4{margin:0 0 5px;font-size:12px;letter-spacing:.5px;text-transform:uppercase;color:var(--yellow)}
   .setup-credits-list{margin:0;padding-left:18px;color:#f2f2f2;font-size:11px;line-height:1.45}
+  .setup-credits-list a{color:inherit;text-decoration:underline;cursor:var(--cm-hand)}
   .setup-credits-note{margin-top:10px;color:#d8d8d8;font-size:10px;line-height:1.4}
 
   /* MANAGERS / TEAMS DIRECTORY */
@@ -396,44 +395,55 @@
   body.intro-active #game > :not(#bootSplash){visibility:hidden}
   body.intro-active #data-source{visibility:hidden}
 </style>
-<style>.league-settings-menu{width:100%;font-family:inherit;cursor:var(--cm-hand)}.cm-change-league{position:absolute;right:20px;top:151px;height:25px;padding:2px 10px;border:2px outset #ddd;background:#aaa;color:#111;font:12px Tahoma,Arial,sans-serif;cursor:var(--cm-hand)}</style>
 <link rel="preload" href="./assets/jost.ttf" as="font" type="font/ttf" crossorigin>
-<link rel="stylesheet" href="./classic.css?v=0.8.1">
-<script src="./ui-rules.js?v=0.8.1"></script>
+<link rel="stylesheet" href="./classic.css?v=0.8.2">
+<script src="./ui-rules.js?v=0.8.2"></script>
 </head>
 <body class="intro-active">
 <div id="stage">
-  <div id="game" aria-label="FPL Manager 2026/27 style prototype">
+  <div id="game" aria-label="Fantasy Championship Manager">
     <section class="boot-splash" id="bootSplash" aria-label="Daladad Software introduction"><img src="./splash.png?v=0.1.3" alt="Daladad Software"></section>
     <section class="boot-interstitial hidden" id="bootKickScreen" aria-hidden="true"><div class="kick-panel"><div class="kick-panel-inner">LET'S KICK<br>RACISM OUT OF<br>FOOTBALL</div></div><div class="kick-racism">RACISM</div></section>
     <section class="setup-overlay active" id="setupScreen" aria-hidden="false" inert>
       <div class="setup-photo"></div>
-      <div class="setup-sidebar"><div class="setup-version">Version<br>0.8.1</div><div class="setup-arrows"><button type="button" data-setup-nav="back" aria-label="Back" disabled></button><button type="button" data-setup-nav="forward" aria-label="Forward" disabled></button></div><button type="button" class="setup-side-item setup-add-manager" id="setupAddManager" title="Choose an existing FPL manager">Add<br>Manager</button><div class="setup-side-item yellow">Restart<br>Game</div><div class="setup-side-item yellow">Exit<br>Game</div></div>
-      <div class="setup-title">Fantasy Premier League Manager 2026/27</div>
-      <div class="setup-heading">Setup Game</div>
+      <div class="setup-sidebar"><div class="setup-version">Version<br>0.8.2</div><div class="setup-arrows"><button type="button" data-setup-nav="back" aria-label="Back" disabled></button><button type="button" data-setup-nav="forward" aria-label="Forward" disabled></button></div><button type="button" class="setup-side-item" id="setupAddManager" title="Choose an existing FPL manager">Add<br>Manager</button><button type="button" class="setup-side-item yellow" id="setupRestartGame">Restart<br>Game</button><button type="button" class="setup-side-item yellow" id="setupExitGame">Exit<br>Game</button></div>
+      <div class="setup-title">Fantasy Championship Manager 2026/27</div>
+      <div class="setup-heading" id="setupGameHeading" role="status">Setup Game</div>
       <div class="setup-menu">
         <div class="setup-choice disabled" id="startNewGame">Loading league…</div><div class="setup-choice" id="quickStartGame">Quick Start Game</div>
         <div class="setup-choice disabled">Restore Saved Game</div><div class="setup-choice disabled">Delete Saved Game</div>
-        <div class="setup-choice disabled">Network Play</div><button type="button" class="setup-choice league-settings-menu" id="gameSettings" data-change-league>Game Settings</button>
+        <div class="setup-choice disabled">Network Play</div><button type="button" class="setup-choice" id="gameSettings" data-change-league>Game Settings</button>
         <div class="setup-choice disabled">Hall Of Fame</div><div class="setup-choice" id="setupGameCredits">Game Credits</div>
       </div>
       <div class="setup-websites" id="setupWebsiteLink">Web Sites</div>
       <div class="setup-bottom"><div class="setup-btn disabled">Back</div><div class="setup-btn disabled" id="setupNext">Next</div></div>
     </section>
 
+    <dialog id="setupQuitDialog" class="setup-quit" aria-labelledby="setupQuitTitle" aria-describedby="setupQuitQuestion">
+      <h2 id="setupQuitTitle">Quit Game</h2>
+      <form method="dialog">
+        <p id="setupQuitQuestion">Are you sure you want to quit the game?</p>
+        <div class="setup-quit-actions">
+          <button class="setup-btn enabled" type="submit" value="yes">Yes</button>
+          <button class="setup-btn enabled" type="submit" value="no" autofocus>No</button>
+        </div>
+      </form>
+    </dialog>
+
     <section class="setup-overlay" id="setupCreditsScreen" aria-hidden="true">
       <div class="setup-photo"></div>
-      <div class="setup-sidebar"><div class="setup-version">Version<br>0.8.1</div><div class="setup-arrows"><button type="button" data-setup-nav="back" aria-label="Back" disabled></button><button type="button" data-setup-nav="forward" aria-label="Forward" disabled></button></div></div>
-      <div class="setup-title">Fantasy Premier League Manager 2026/27</div>
+      <div class="setup-sidebar"><div class="setup-version">Version<br>0.8.2</div><div class="setup-arrows"><button type="button" data-setup-nav="back" aria-label="Back" disabled></button><button type="button" data-setup-nav="forward" aria-label="Forward" disabled></button></div></div>
+      <div class="setup-title">Fantasy Championship Manager 2026/27</div>
       <div class="setup-credits-panel">
         <h3 class="setup-credits-title">Project &amp; Photo Credits</h3>
-        <div class="setup-credits-sub">Fantasy Premier League Manager 2026/27 is a fan-made head-to-head league viewer styled after classic early-2000s football-management games. The background library deliberately uses English grassroots, Sunday-league and local-football imagery rather than recognisable professional-club photography.</div>
+        <div class="setup-credits-sub">Fantasy Championship Manager 2026/27 is a fan-made head-to-head league viewer styled after classic early-2000s football-management games. The background library deliberately uses English grassroots, Sunday-league and local-football imagery rather than recognisable professional-club photography.</div>
         <div class="setup-credits-section">
           <h4>Project</h4>
           <ul class="setup-credits-list">
             <li>Concept, direction and website project: Cathal Doyle</li>
             <li>Prototype build and iterative refinement: ChatGPT</li>
             <li>Website: cathaldoyle.com</li>
+            <li><a href="https://github.com/doyler442/championship-manager-fpl-skin" target="_blank" rel="noopener">Source code on GitHub</a></li>
           </ul>
         </div>
         <div class="setup-credits-section">
@@ -462,10 +472,10 @@
     </section>
     <section class="setup-overlay" id="setupManagerScreen" aria-hidden="true">
       <div class="setup-photo"></div>
-      <div class="setup-sidebar"><div class="setup-version">Version<br>0.8.1</div><div class="setup-arrows"><button type="button" data-setup-nav="back" aria-label="Back" disabled></button><button type="button" data-setup-nav="forward" aria-label="Forward" disabled></button></div></div>
-      <div class="setup-title">Fantasy Premier League Manager 2026/27</div>
+      <div class="setup-sidebar"><div class="setup-version">Version<br>0.8.2</div><div class="setup-arrows"><button type="button" data-setup-nav="back" aria-label="Back" disabled></button><button type="button" data-setup-nav="forward" aria-label="Forward" disabled></button></div></div>
+      <div class="setup-title">Fantasy Championship Manager 2026/27</div>
       <div class="setup-heading setup-select-heading">Select Manager</div>
-      <button type="button" class="cm-change-league" data-change-league>Change league</button><div class="setup-manager-box" id="setupManagerList"></div>
+      <button type="button" class="cm-change-league" data-change-league>Change League</button><div class="setup-manager-box" id="setupManagerList"></div>
       <div class="setup-bottom"><div class="setup-btn enabled" id="setupManagerCancel">Cancel</div><div class="setup-btn disabled" id="setupManagerNext">Next</div></div>
     </section>
     <div class="photo"></div><div class="wash"></div>
@@ -615,7 +625,7 @@
         <div class="transfer-centre-nav"><div class="big-btn" id="transferCentreBack">Back</div><div class="big-btn next">Next</div></div>
       </section>
       <section class="find-view" id="findView" aria-hidden="true">
-        <div class="find-title">FPL Manager 2026/27</div><div class="find-tabs"><div class="find-tab" data-find-mode="club">Club</div><div class="find-tab active" data-find-mode="player">Player</div></div>
+        <div class="find-title">Fantasy Championship Manager 2026/27</div><div class="find-tabs"><div class="find-tab" data-find-mode="club">Club</div><div class="find-tab active" data-find-mode="player">Player</div></div>
         <div class="find-search"><label for="findQuery">Search For</label><input class="find-input" id="findQuery" autocomplete="off" /></div><div class="find-pager"><button data-page="first" aria-label="First page">«</button><button data-page="prev" aria-label="Previous page">‹</button><span id="findPageLabel">Pg 1/1</span><button data-page="next" aria-label="Next page">›</button><button data-page="last" aria-label="Last page">»</button></div><div class="find-controls"><select class="find-select" id="findClub"><option value="">All Clubs</option></select><select class="find-select" id="findPosition"><option value="">All Positions</option><option>GKP</option><option>DEF</option><option>MID</option><option>FWD</option></select><select class="find-select" id="findAvailability"><option value="">All Availability</option><option value="a">Available</option><option value="issue">Injury / Doubt</option></select></div>
         <div class="find-list-title" id="findListTitle">All Players</div><div class="find-list" id="findList"></div><div class="find-nav"><div class="big-btn" id="findBack">Back</div><div class="big-btn next">Next</div></div>
       </section>
@@ -643,7 +653,7 @@
     </main>
   </div>
 </div>
-<script src="./league-selector.js?v=0.8.1" data-app="cm"></script>
+<script src="./league-selector.js?v=0.8.2" data-app="cm"></script>
 <script>
 
 const CM_BACKGROUNDS={
@@ -817,7 +827,7 @@ function applySeason(season){
   let node;while((node=walker.nextNode())){
     if(!['SCRIPT','STYLE'].includes(node.parentElement?.tagName)&&node.nodeValue.includes('2026/27'))node.nodeValue=node.nodeValue.replaceAll('2026/27',season);
   }
-  document.title='Fantasy Championship Manager '+season+' v0.8.1';
+  document.title='Fantasy Championship Manager '+season+' v0.8.2';
 }
 
 let LEAGUE_PAYLOAD=null;
@@ -2011,6 +2021,17 @@ document.getElementById('setupManagerNext').addEventListener('click',e=>{if(e.cu
 document.getElementById('setupGameCredits').addEventListener('click',()=>showSetupCreditsScreen());
 document.getElementById('setupCreditsBack').addEventListener('click',()=>SETUP_HISTORY.length?setupNavigate(-1):showSetupScreen());
 document.getElementById('setupAddManager').addEventListener('click',()=>{if(BOOT_READY&&MANAGERS.length)showSetupManagerScreen(false);});
+document.getElementById('setupRestartGame').addEventListener('click',()=>window.location.reload());
+const setupQuitDialog=document.getElementById('setupQuitDialog');
+document.getElementById('setupExitGame').addEventListener('click',()=>{
+  setupQuitDialog.returnValue='no';
+  setupQuitDialog.showModal();
+});
+setupQuitDialog.addEventListener('close',()=>{
+  if(setupQuitDialog.returnValue!=='yes')return;
+  window.close();
+  if(!window.closed)document.getElementById('setupGameHeading').textContent='Close this tab to exit.';
+});
 document.getElementById('setupWebsiteLink').addEventListener('click',()=>window.open('https://cathaldoyle.com','_blank','noopener'));
 document.getElementById('directoryList').addEventListener('pointerover',e=>{const row=e.target.closest('[data-entry]');if(row){const entry=Number(row.dataset.entry);prefetchApi('squad',{entry},60000);prefetchApi('competition-schedule',{entry},45000);}});
 document.getElementById('directoryBack').addEventListener('click',goBackRoute);document.getElementById('directoryList').addEventListener('click',e=>{const row=e.target.closest('.directory-row');if(row?.dataset.entry)showClub(Number(row.dataset.entry),'directory');});
@@ -2031,6 +2052,6 @@ function scale(){
 window.addEventListener('resize',scale); setInterval(updateDate,1000); setInterval(()=>{const picker=document.getElementById('managerPicker'); if(selectedEntry && !picker.classList.contains('active') && !document.querySelector('.setup-overlay.active') && !STARTING && !CONTINUING) loadNews(selectedEntry,{quiet:true});},300000); scale(); runIntroSequence(); boot();
 </script>
 <div id="data-source" role="status" aria-live="polite"></div>
-<script src="./classic-ui.js?v=0.8.1"></script>
+<script src="./classic-ui.js?v=0.8.2"></script>
 </body>
 </html>

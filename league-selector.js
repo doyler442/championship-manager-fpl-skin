@@ -22,9 +22,6 @@
     if(selected)url.searchParams.set('league',String(selected));
     return url.pathname+url.search;
   }
-  const style=document.createElement('style');
-  style.textContent=`#fpl-league-dialog{width:min(480px,calc(100vw - 24px));max-height:calc(100dvh - 24px);overflow:auto;margin:auto;padding:0;border:3px outset #bbb;background:#dedede;color:#14142a;box-shadow:0 12px 60px #000a;font:15px/1.5 Tahoma,Arial,sans-serif;z-index:10000}#fpl-league-dialog::backdrop{background:#000b}#fpl-league-dialog h2{margin:0;padding:12px 16px;background:#180064;color:#fff;font-size:19px}#fpl-league-dialog form{padding:16px}#fpl-league-dialog p{margin:0 0 12px}#fpl-league-dialog label{display:block;font-weight:bold}#fpl-league-dialog input{display:block;width:100%;padding:10px;margin:5px 0 12px;border:2px inset #aaa;background:#fff;color:#111;font:16px Arial,sans-serif;cursor:text}#fpl-league-dialog .league-actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}#fpl-league-dialog button{padding:9px 13px;min-height:42px;border:2px outset #bbb;background:#c5c5c5;color:#111;font:14px Tahoma,Arial,sans-serif;cursor:pointer}#fpl-league-dialog button[type=submit]{background:#220077;color:#fff}#fpl-league-dialog button:disabled{opacity:.6;cursor:wait}#fpl-league-dialog [role=status]{color:#8a140d;min-height:1.5em}#fpl-league-dialog[data-theme=keegan]{border-color:#b8860b;background:#101d1c;color:#fff7bf}#fpl-league-dialog[data-theme=keegan] h2{background:#946800}#fpl-league-dialog[data-theme=keegan] [role=status]{color:#ffe08c}`;
-  document.head.appendChild(style);
   const dialog=document.createElement('dialog');dialog.id='fpl-league-dialog';dialog.dataset.theme=script.dataset.app;dialog.setAttribute('aria-labelledby','fpl-league-title');
   dialog.innerHTML='<h2 id="fpl-league-title">Choose H2H League</h2><form><p id="fpl-current-league">Using the site default league.</p><label for="fpl-league-input">League ID or FPL league link</label><input id="fpl-league-input" type="text" autocomplete="off" spellcheck="false" aria-describedby="fpl-league-help fpl-league-status"><p id="fpl-league-help">Use the number from your head-to-head league’s FPL link, or paste the full link. No FPL password is needed.</p><p>Your choice stays in this browser. Changing league returns you to manager selection.</p><p id="fpl-league-status" role="status" aria-live="polite"></p><div class="league-actions"><button type="submit">Use league</button><button type="button" data-default>Site default</button><button type="button" data-cancel>Cancel</button></div></form>';
   const game=document.getElementById('game');game.appendChild(dialog);dialog.setAttribute('aria-modal','true');
@@ -34,11 +31,15 @@
   const sidebar=document.querySelector('#setupCreditsScreen .setup-sidebar').cloneNode(true);sidebar.removeAttribute('aria-hidden');
   const title=document.createElement('div');title.className='setup-title';
   const form=dialog.querySelector('form'),panel=document.createElement('div');panel.className='cm-league-panel';
-  panel.appendChild(dialog.querySelector('h2'));
+  const heading=dialog.querySelector('h2');
+  heading.className='setup-heading';
   const actions=form.querySelector('.league-actions');
   for(const child of [...form.children])if(child!==actions)panel.appendChild(child);
-  form.prepend(panel);cmScreen.append(photo,sidebar,title,form);dialog.appendChild(cmScreen);
-  style.textContent+=`#fpl-league-dialog[data-theme=cm]{position:absolute;inset:0;width:800px;height:600px;margin:0;max-width:none;max-height:none;padding:0;border:0;background:#000;box-shadow:0 0 0 1px #5f5f5f;overflow:hidden;font-family:Tahoma,Verdana,Arial,sans-serif}#fpl-league-dialog[data-theme=cm]::backdrop{background:transparent}#fpl-league-dialog .cm-league-screen{position:relative;width:800px;height:600px;transform-origin:top left;color:#eee}#fpl-league-dialog[data-theme=cm] form{position:absolute;inset:0;padding:0}#fpl-league-dialog .cm-league-panel{position:absolute;left:106px;right:14px;top:92px;height:404px;padding:14px 18px;overflow:auto;background:rgba(7,10,48,.72);border:2px solid #243de0;box-shadow:inset 0 0 0 1px #ffffff2e}#fpl-league-dialog[data-theme=cm] h2{padding:0;margin:0 0 14px;background:none;color:#eff500;font-size:24px;line-height:1.2;text-shadow:2px 2px #111}#fpl-league-dialog[data-theme=cm] p{margin:0 0 14px;font-size:12px;line-height:1.45;color:#eee}#fpl-league-dialog[data-theme=cm] label{font-size:13px;color:#eff500}#fpl-league-dialog[data-theme=cm] input{margin:8px 0 16px;padding:9px 10px;background:rgba(0,0,35,.7);color:#fff;border:2px inset #aaa;font:14px Tahoma,Verdana,Arial,sans-serif;outline-offset:2px}#fpl-league-dialog[data-theme=cm] input:focus-visible{outline:2px solid #eff500}#fpl-league-dialog[data-theme=cm] [role=status]{color:#eff500}#fpl-league-dialog[data-theme=cm] .league-actions{position:absolute;left:106px;right:14px;bottom:8px;height:43px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:2px;margin:0}#fpl-league-dialog[data-theme=cm] button{padding:0;min-height:0;border:2px solid #ddd;border-right-color:#555;border-bottom-color:#555;background:linear-gradient(#c0c0c0,#969696);color:#eee;font:700 16px Tahoma,Verdana,Arial,sans-serif;text-shadow:1px 1px #666}#fpl-league-dialog[data-theme=cm] button:hover{filter:brightness(1.08)}`;
+  actions.classList.add('setup-bottom');
+  actions.querySelectorAll('button').forEach(button=>button.className='setup-btn');
+  form.prepend(panel);
+  cmScreen.append(photo,sidebar,title,heading,form);
+  dialog.appendChild(cmScreen);
   let previousFocus=null,inertSiblings=[];
   function openScreen(){
     if(dialog.open)return;

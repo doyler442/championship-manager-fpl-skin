@@ -4,10 +4,11 @@ Updated 7 November 2026. This is the working checklist for this game. Update it 
 
 ## Current position
 
-Version 0.8.1 runs on the FPL site. The previous hosted build is available separately as v0.0.1. The current game uses server-side league settings, and visitors can choose another readable H2H league in Game Settings.
+Version 0.8.2 bundles the setup and credits refinements. The hosted game is available on the FPL site. The previous hosted build is available separately as v0.0.1. The current game uses server-side league settings, and visitors can choose another readable H2H league in Game Settings.
 
-- [Hosted v0.8.1](https://fpl.cathaldoyle.com/championship-manager/)
+- [Hosted game](https://fpl.cathaldoyle.com/championship-manager/)
 - [Archived v0.0.1](https://fpl.cathaldoyle.com/championship-manager-v0.0.1.html)
+- [GitHub releases](https://github.com/doyler442/championship-manager-fpl-skin/releases)
 - [MeTube development entry](https://dev.cathaldoyle.com/Open_Artefact:_Fantasy_Championship_Manager)
 
 ## Completed locally

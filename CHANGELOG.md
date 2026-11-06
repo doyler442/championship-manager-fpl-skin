@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.8.2 — 7 November 2026
+
+- Use the Fantasy Championship Manager title throughout setup and the game. Use the system pointer outside the game frame.
+- Make Restart Game reload the page and Exit Game open a classic-style confirmation.
+- Keep the setup menu steady on hover and give Change League the same grey styling as the in-game controls.
+- Use the in-game panel borders for league settings and credits. Link to GitHub from Game Credits.
+
 ## 0.8.1 — 6 November 2026
 
 - Restore forward-only Continue Game and You Have News. Continue keeps the latest headline when a refresh brings no new stories.

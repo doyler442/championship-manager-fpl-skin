@@ -1,6 +1,6 @@
 # Fantasy Championship Manager
 
-A retro football-management interface for real Fantasy Premier League head-to-head data. Version 0.8.1, prepared 6 November 2026. An independent fan project by Cathal Doyle, developed with ChatGPT/Codex; not affiliated with the Premier League, Sports Interactive or SEGA.
+A retro football-management interface for real Fantasy Premier League head-to-head data. Version 0.8.2, prepared 7 November 2026. An independent fan project by Cathal Doyle, developed with ChatGPT/Codex; not affiliated with the Premier League, Sports Interactive or SEGA.
 
 The default installation reads [H2H 2026/27, league 86140](https://fantasy.premierleague.com/en/leagues/86140/matches/h). This is a publicly readable third-party league, not a competition we operate. No FPL login is needed for the tested data. Availability can change, and league IDs may change each season. No manager snapshot, original private league configuration or fabricated demo results are bundled.
 
@@ -30,7 +30,7 @@ The cleaned Daladad Software logo appears for 2.2 seconds at startup while leagu
 
 Open **Game Settings** on the setup menu, or **Change league** on the manager-selection screen. During a game, use the Options button to return to setup. Enter a numeric H2H league ID or paste its official FPL H2H league link, then choose **Use league**. The app checks anonymous H2H access before saving. A joining code, Classic league or Draft league will not work.
 
-The league settings screen uses the same photo background, red header, blue text frame and grey buttons as the other CM setup screens. Its text frame and the credits frame align with the main header.
+Game Settings and Change League open the same screen. It uses the setup header and grey buttons, with a translucent form and thin grey borders drawn from the in-game screens.
 
 The choice is remembered in this browser for this game and installation path. It does not change other visitors or server settings. Changing league reloads the game and returns to manager selection/name entry; previous league screens and in-memory data are discarded. **Site default** removes the saved choice after checking the configured league. Clear site storage to forget a choice, or use another browser/device to make an independent choice. No FPL login is required.
 
@@ -76,7 +76,7 @@ Continue Game opens one newer unread story per press and never wraps to older un
 
 Find has working Club and Player tabs, a dark search field, paging controls and compact open lists. Club browsing opens real FPL club rosters; player rows open profiles and club names open that club’s roster. Club, position and availability filters are retained for player lists. Unimplemented Nation/Non-Player search tabs, inert View selectors and dummy Clear Squad/season buttons are omitted. Other original unavailable features, including Action Zones, retain their existing behavior.
 
-The setup sidebar uses the same compact arrows as the game, a recessed version cell and yellow Restart/Exit text. Setup menu cells adjoin with flat blue edges and no mouse hover fill/highlight. Starting or Quick Starting a session keeps setup visible until fresh News and its photograph are ready, preventing a glimpse of the previous game page. No Please Wait text is added to the setup title.
+The setup sidebar uses the same compact arrows as the game, a recessed version cell and yellow Restart/Exit text. **Restart Game** reloads the page. **Exit Game** asks for confirmation. Choose **Yes** to close the tab or **No** to return to the game. If the browser blocks tab closure, the game prompts you to close it manually. Setup menu cells adjoin with flat blue edges and no mouse hover fill/highlight. Starting or Quick Starting a session keeps setup visible until fresh News and its photograph are ready, preventing a glimpse of the previous game page. No Please Wait text is added to the setup title.
 
 News and Media use dark translucent list/headline/article panels without pale outer rims. Scrollbars appear only when there are more than five rows. Next Unread is a small 124×19 button aligned with the right edge. A red “You Have News” alert blinks at the foot of the sidebar while real stories remain unread; clicking it advances through the unread sequence, keeping the current photograph. You Have News follows the same forward unread queue as Continue and disappears when that queue is finished. Older unread items remain available through the explicit Next Unread button. Background News polling can update the alert while another game page is open.
 

@@ -2,6 +2,11 @@
 
 Local preparation, not a production deployment.
 
+## Version 0.8.2 — 7 November 2026
+
+- PHP lint, all 25 backend regressions, JavaScript checks, asset paths and release allowlist passed.
+- Local Chrome checks covered Restart, the quit confirmation and browser fallback, setup hover styling, both league settings entry points, the credits link and the cursor at the game boundary.
+
 ## Version 0.8.1 — 6 November 2026
 
 - Restored the News queue from the pre-loader build. Continue and You Have News advance through newer unread articles. Continue keeps the latest headline after an unchanged refresh.

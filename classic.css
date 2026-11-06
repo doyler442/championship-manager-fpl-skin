@@ -1,7 +1,7 @@
 /* Shared geometry and CM reference treatment. Jost approximates the original lettering. */
 @font-face{font-family:CM Interface;src:url('./assets/jost.ttf') format('truetype');font-weight:100 900;font-display:block}
 :root{--cm-font:'CM Interface','Eras Demi ITC',sans-serif;--cm-tab:#220063;--cm-sheet:rgba(0,0,0,.4);--cm-rule:rgba(220,220,220,.22)}
-body{font-family:var(--cm-font);cursor:var(--cm-arrow)}
+body{font-family:var(--cm-font)}
 button,input,select{font-family:var(--cm-font)!important}
 #game [class]{text-shadow:1px 1px 0 #0008}
 #game .main :is(p,div,span){font-weight:500}
@@ -166,7 +166,7 @@ select{cursor:var(--cm-hand);appearance:none!important;background-image:url("dat
 
 /* Corrections shared across every screen, including Find and Media. */
 :root{--cm-arrow:url('./assets/profile-arrow.svg') 2 1,default;--cm-hand:url('./assets/classic-hand.svg') 8 1,pointer}
-html,body,#game{cursor:var(--cm-arrow)}
+#game{cursor:var(--cm-arrow)}
 #game[data-input=pointer] :focus{outline:none!important}
 #game[data-input=keyboard] :focus-visible{outline:1px dotted var(--cyan);outline-offset:-2px}
 .sidebar .date-cell.live-flash{cursor:var(--cm-hand)}
@@ -255,11 +255,11 @@ html,body,#game{cursor:var(--cm-arrow)}
 .setup-title{left:100px;right:10px;top:10px;height:60px;font-size:26px}
 .setup-heading{left:110px;right:20px;top:80px;height:50px;background:rgba(0,0,0,.43)}
 .setup-menu{left:110px;right:20px;top:145px;height:260px;gap:0;background:none}
-.setup-choice,.setup-choice:hover:not(.disabled),.setup-choice.selected{border:1px solid #101090;background:rgba(0,0,0,.45);box-shadow:none;color:#eee;text-shadow:1px 1px #222}
+.setup-choice{border:1px solid #101090;background:rgba(0,0,0,.45);box-shadow:none;color:#eee;text-shadow:1px 1px #222}
+button.setup-choice{appearance:none;width:100%;padding:0}
 .setup-choice:nth-child(even){border-left:0}.setup-choice:nth-child(n+3){border-top:0}
 .setup-choice.disabled{color:#aaa;background:rgba(0,0,0,.45)}
-.setup-websites,.setup-websites:hover{left:278px;right:188px;top:405px;height:64px;border:1px solid #101090;border-top:0;background:rgba(0,0,0,.45);box-shadow:none;color:#eee;text-shadow:1px 1px #222;transition:none}
-.setup-btn.enabled:hover{filter:none}
+.setup-websites{left:278px;right:188px;top:405px;height:64px;border:1px solid #101090;border-top:0;background:rgba(0,0,0,.45);box-shadow:none;color:#eee;text-shadow:1px 1px #222;transition:none}
 #continueGame .continue-wait,#continueGame .continue-status:empty,#continueGame.loading .continue-status{display:none}
 #continueGame.loading .continue-label,#continueGame:has(.continue-status:not(:empty)) .continue-label{display:none}
 #continueGame.loading .continue-wait{display:block}
@@ -274,12 +274,20 @@ html,body,#game{cursor:var(--cm-arrow)}
 
 :is(.tabs,.media-tabs,.competition-tabs,.club-tabs,.player-tabs,.bottom-tabs,.club-bottom-tabs,.competition-bottom-tabs,.media-bottom){border-color:#120526}
 /* Setup history arrows are real controls, including in the league dialog. */
-.setup-arrows button,#fpl-league-dialog .setup-arrows button{display:flex;align-items:center;justify-content:center;position:relative;min-height:0;height:40px;margin:0;padding:0;border:1px solid;border-color:#12128b #000034 #000027 #0b0b78;background:linear-gradient(#04046b,#00004b);font-size:0;cursor:var(--cm-hand)}
+.setup-arrows button{display:flex;align-items:center;justify-content:center;position:relative;min-height:0;height:40px;margin:0;padding:0;border:1px solid;border-color:#12128b #000034 #000027 #0b0b78;background:linear-gradient(#04046b,#00004b);font-size:0;cursor:var(--cm-hand)}
 .setup-arrows button::before{content:'';width:11px;height:9px;background:var(--yellow);clip-path:polygon(0 50%,42% 0,42% 29%,100% 29%,100% 71%,42% 71%,42% 100%);filter:drop-shadow(1px 1px #111)}
 .setup-arrows button:nth-child(2)::before{transform:rotate(180deg)}
-.setup-arrows button:disabled,#fpl-league-dialog .setup-arrows button:disabled{opacity:1;cursor:var(--cm-arrow)}
+.setup-arrows button:disabled{opacity:1;cursor:var(--cm-arrow)}
 .setup-arrows button:disabled::before{opacity:.3}
-.setup-add-manager{width:100%;padding:0;font-family:var(--cm-font);color:#ddd;cursor:var(--cm-hand)}
+button.setup-side-item{width:100%;padding:0;cursor:var(--cm-hand)}
+.setup-quit{width:min(280px,calc(100% - 24px));padding:0;border:2px solid #eee;border-right-color:#737373;border-bottom-color:#737373;background:#b5b5b5;color:#fff;box-shadow:2px 2px #2229}
+.setup-quit::backdrop{background:transparent}
+.setup-quit h2{margin:0;padding:3px 6px;background:#1718a0;color:#fff;font-size:12px;line-height:1.2;font-weight:600}
+.setup-quit form{margin:0;padding:12px 10px 10px}
+.setup-quit p{margin:0 0 12px;font-size:13px;line-height:1.3;text-shadow:0 1px #5c5c5c}
+.setup-quit-actions{display:flex;justify-content:center;gap:8px}
+.setup-quit-actions .setup-btn{width:74px;height:26px;padding:0;font-size:12px;font-weight:600}
+.setup-quit-actions button:focus-visible{outline:2px solid #1718a0;outline-offset:1px}
 .starting .setup-heading:after{content:none}
 .match-team-heading[hidden]{display:none}
 .match-team-list:has(.match-team-heading[hidden]){padding-top:0}
@@ -299,13 +307,36 @@ html,body,#game{cursor:var(--cm-arrow)}
 .motm-row.leader .motm-team{color:var(--yellow)}
 .motm-row:not(.header){cursor:var(--cm-hand)}
 .find-search{width:258px;grid-template-columns:128px 128px}
-#fpl-league-dialog .setup-sidebar{z-index:2}
+#fpl-league-dialog{
+  position:absolute;inset:0;width:100%;height:100%;max-width:none;max-height:none;
+  margin:0;padding:0;border:0;overflow:hidden;background:#000;color:#eee;font:inherit;z-index:260
+}
+.cm-league-screen{position:relative;width:100%;height:100%}
+.cm-league-screen .setup-heading{margin:0}
+.setup-credits-panel,.cm-league-panel{background:var(--cm-sheet);border-block:1px solid var(--cm-rule)}
+.cm-league-panel{
+  position:absolute;left:110px;right:20px;top:145px;max-height:385px;overflow:auto;
+  padding:12px 14px;
+  font-size:12px;line-height:1.4
+}
+.cm-league-panel p{margin:0 0 8px}
+.cm-league-panel p:last-child{margin-bottom:0}
+.cm-league-panel label{display:block;margin-bottom:4px;color:var(--yellow)}
+#fpl-league-input{
+  width:100%;height:28px;margin:0 0 8px;padding:0 8px;border:1px solid var(--cm-rule);
+  background:rgba(0,0,0,.55);color:#eee;font-size:13px;cursor:text
+}
+#fpl-league-status{min-height:1.4em;color:var(--yellow)}
+.cm-league-screen .league-actions{left:110px;right:20px;grid-template-columns:repeat(3,1fr)}
+.cm-league-screen .league-actions button:disabled{color:#aaa;cursor:wait}
 
 /* Captions stay constant; the green menu shows the current checked choice. */
-.squad-control-face{position:relative;display:block;width:112px;min-width:112px;height:24px;background:linear-gradient(#aaa,#7e7e7e);border:1px solid;border-color:#d6d6d6 #555 #555 #c9c9c9;font:500 11px var(--cm-font);text-shadow:1px 1px #555}
+:is(.squad-control-face,.cm-change-league){display:block;width:112px;min-width:112px;height:24px;background:linear-gradient(#aaa,#7e7e7e);border:1px solid;border-color:#d6d6d6 #555 #555 #c9c9c9;font:500 11px var(--cm-font);text-shadow:1px 1px #555}
+.squad-control-face{position:relative}
+.cm-change-league{appearance:none;position:absolute;right:20px;top:151px;width:128px;padding:0 22px 0 10px;color:#eee;text-align:left;cursor:var(--cm-hand)}
 .squad-control-face.small{width:104px;min-width:104px}
 .squad-control-face::before{content:attr(data-caption);position:absolute;left:10px;top:3px;color:#eee;pointer-events:none}
-.squad-control-face::after{content:'';position:absolute;right:7px;top:9px;border-left:4px solid transparent;border-right:4px solid transparent;border-top:5px solid #111;pointer-events:none}
+:is(.squad-control-face,.cm-change-league)::after{content:'';position:absolute;right:7px;top:9px;border-left:4px solid transparent;border-right:4px solid transparent;border-top:5px solid #111;pointer-events:none}
 .squad-control-face .club-control{position:absolute;inset:0;width:100%;height:100%;min-width:0;margin:0;opacity:0}
 .squad-control-face:has(select:focus-visible){outline:1px dotted #80f7eb;outline-offset:-3px}
 .sidebar .side-cell.debug-space{cursor:var(--cm-arrow)}
